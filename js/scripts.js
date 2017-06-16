@@ -26,7 +26,7 @@ base('Songs').select({
 //        console.log('Retrieved', record.get('Name') + ' - ' + record.get('Artist'));
         populateSongs({
             name: record.fields.Name,
-            artist: record.fields.Artist,
+            field: record.fields.Artist,
             lyrics: record.fields.Lyrics
         });
     });
@@ -50,7 +50,10 @@ base('Quotes').select({
 
     records.forEach(function(record) {
 //        console.log(record.fields.Person + ' - ' + record.fields.Quote);
-        
+        populateSongs({
+            name: record.fields.Person,
+            field: record.fields.Quote
+        });
     });
 
     // To fetch the next page of records, call `fetchNextPage`.
@@ -80,18 +83,13 @@ function populateSongs(object) {
     if (object !== undefined)
         songs.push(object);
 //    console.log(songs);
-    songDropdown.innerHTML = songs.map(item => `<option value="${item.artist}">${item.name} - ${item.artist}</option>`);
+    songDropdown.innerHTML = songs.map(item => `<option value="${item.artist}">${item.name} - ${item.field}</option>`);
 //    console.log(songDropdown.innerHTML);
 }
 
 function setSong() {
-    console.log(songs);
-    var temp = document.querySelector('[name="text"]');
-    temp.value = songs.lyrics;
+    
 }
-
-populateSongs();
-setSong();
 
 function toggle(startOver = true) {
     speechSynthesis.cancel();
