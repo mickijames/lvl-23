@@ -21,12 +21,18 @@
         <label for="pitch">Pitch:</label>
 
         <input name="pitch" type="range" min="0" max="2" step="0.1">
-        <textarea name="text">Hello! I love JavaScript 👍</textarea>
-        <button id="stop">Stop!</button>
-        <button id="speak">Speak</button>
+        
+        <select name="song" id="songs">
+        <option value="">Select A Song/Quote</option>
+        </select>
+        
+        <textarea name="text">What it do!</textarea>
+        <button id="stop">Shut up yo</button>
+        <button id="speak">SAY IT TO THE BACK</button>
 
     </div>
-   
+    
+    <script src="js/airtable.js"></script>
     <script src="js/scripts.js"></script>
 
 </body>
